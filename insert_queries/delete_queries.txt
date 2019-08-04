@@ -1,0 +1,42 @@
+select * from batch_execution_mapping for update
+/
+delete from batch_execution_mapping
+/
+select * from batch_master for update
+/
+delete from batch_master
+/
+select * from batch_parameter_master for update
+/
+delete from batch_parameter_master
+/
+select * from batch_task_master for update
+/
+delete from batch_task_master
+/
+select * from batch_task_precedence_master for update
+/
+delete from batch_task_precedence_master
+/
+select * from batch_task for update
+/
+delete from batch_task
+/
+commit;
+
+
+select * from stg_non_sec_exposures for update
+/
+delete from stg_non_sec_exposures
+/
+select * from rev_dq_assignments for update
+/
+delete from rev_dq_assignments
+/
+select * from dq_check_master_dup for update
+/
+delete from dq_check_master_dup
+/
+commit;
+
+Select t.V_DQ_SRC_TBL, t.V_DQ_SRC_COL, t.n_rule_sys_id,t.F_NV_SEV, t.V_NV_WHERE, t.V_RULE_FILTER, t.F_ON_SOURCE  ,t.V_FOLDER_NAME,t.V_INFODOM, t.N_RULE_SYS_ID from dq_check_master t where t.v_dq_check_id='RangeNull'
